@@ -10,7 +10,7 @@ function App() {
 	const [songs, setSongs] = useState<any>([]);
 
 	const getAllSongs = async () => {
-		const songs = await appService.getAllSongs();
+		const songs = await appService.filterByArtist("killer");
 		console.log(songs)
 		setSongs(songs)
 	}
