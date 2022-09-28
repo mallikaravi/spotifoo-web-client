@@ -1,6 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/logo.svg';
+import './styles/App.css';
 import { AppService } from './services/app.service'
 import { Songs } from './components/Songs'
 import { useState } from 'react'
