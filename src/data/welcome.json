@@ -1,0 +1,20 @@
+
+[
+    {
+    "title":"Spotifoo",
+    "icon" :"./assets/icons/logo.png",
+    "link" :"/Spotifoo"
+    },
+
+    {
+        "title":"Home",
+        "icon" :"./assets/icons/home.svg",
+        "link" :"/Home"
+        },
+
+        {
+            "title":"Search",
+            "icon" :"./assets/logo.png",
+            "link" :"/Search"
+            }
+]
