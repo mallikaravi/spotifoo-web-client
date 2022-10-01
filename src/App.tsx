@@ -22,10 +22,6 @@ function App() {
     console.log(songs);
     setSongs(songs);
   };
-  const countries = [{}];
-  const resultWidgets = { songs }
-    .filter((song) => genericSearch(song, ["title", "description"], query))
-    .filter((song) => genericFilter(song, activeFilters));
 
   return (
     <div className="App">
