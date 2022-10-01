@@ -1,7 +1,10 @@
 import React from 'react'
 
-export const Songs = ({ songs }: any) => {
-	console.log('Songs length =>', songs.length)
+export const Songs = ({ songs, loading }: any) => {
+	//console.log('Songs length =>', songs.length)
+	if(loading){
+		return (<h2> Loading...</h2>);
+	}
 	if (songs.length === 0) return null
 
 	const SongsRow = (song: any, index: number) => {

@@ -2,44 +2,69 @@ import logo from "./assets/logo.svg";
 import "./styles/App.css";
 import { AppService } from "./services/app.service";
 import { Songs } from "./components/Songs";
-import { Filters } from "./components/Filter";
-import { Card } from "./components/Card";
+import { Pagination } from "./components/Pagination";
 import SearchInput from "./components/Search";
 import { genericSearch } from "./utils/genericSearch";
-import { genericFilter } from "./utils/genericFilter";
-import IFilter from "./interfaces/IFilter";
-import { useState } from "react";
+
+
+import { useEffect, useState } from "react";
 
 function App() {
   const appService = new AppService();
-  const [songs, setSongs] = useState<any>([]);
+
+  const [songs, setSongs] = useState([]);
+  const [totalSongs, setTotalSongs] = useState([]);
+
+  // Search By Title
   const [query, setQuery] = useState<string>("");
-  const [activeFilters, setActiveFilters] = useState<Array<IFilter<string>>>(
-    []
-  );
-  const getAllSongs = async () => {
-    const songs = await appService.getAllSongs();
-    console.log(songs);
-    setSongs(songs);
-  };
+  // const [activeFilters, setActiveFilters] = useState<Array<IFilter<string>>>(
+  //   []
+  // );
+
+  useEffect(() => {
+    const filterByTitle = async () => {
+      const songs = await appService.filterByTitle(query);
+      setSongs(songs);
+      setTotalSongs(songs)
+    };
+    console.log("filterByTitle. " + songs.length)
+    if (query.length > 0) filterByTitle();
+  }, [query])
+
+
+  
+  // Add Pagination
+  const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [songsPerPage] = useState(10)
+  const paginate = (pageNumber: any) => {
+    setCurrentPage(pageNumber)
+    console.log("setCurrentPage. " + pageNumber)
+  }
+
+  useEffect(() => {
+    const pagination = async () => {
+      setLoading(true);
+      // Getting all the songs to know the total songs count
+      const totalSongs = await appService.getAllSongs();
+      setTotalSongs(totalSongs);
+
+      const songs = await appService.pagination(currentPage, songsPerPage);
+      setSongs(songs);
+      setLoading(false);
+    };
+    console.log("Pagination. " + songs.length)
+    if (query.length < 1) pagination()
+  }, [query, currentPage]);
+
 
   return (
     <div className="App">
-      <div className="col-md-4">
-        <div className="btn">
-          <button
-            type="button"
-            onClick={(e) => getAllSongs()}
-            className="btn btn-warning"
-          >
-            Get all Songs
-          </button>
-        </div>
+      <div>
+        <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
       </div>
-      <div className="row mrgnbtm">
-        <Songs songs={songs}></Songs>
-      </div>
-      <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
+      <Songs songs={songs} loading={loading} />
+      <Pagination songsPerPage={songsPerPage} totalSongs={totalSongs.length} paginate={paginate} />
     </div>
   );
 }
