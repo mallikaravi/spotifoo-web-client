@@ -1,0 +1,14 @@
+/* Colors */
+:root {
+  --gray-darkest: #121212;
+  --gray-dark: #242424;
+  --light-gray: #a3a3a3;
+  --green: #1db954;
+}
+
+/* Spacing */
+:root {
+  --space-small: 8px;
+  --space-medium: 16px;
+  --space-big: 32px;
+}

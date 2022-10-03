@@ -1,17 +1,18 @@
-import React from 'react'
-import Logo from '../assets/icons/home.svg'
-import Home from '../assets/icons/home.svg'
-import Search from '../assets/icons/search.svg'
+import React from "react";
+
+import styled from 'styled-components'
 
 export const Sidemenubar = [
     {
-        title: 'Home',
-        path: '/',
-        icon: Home
+        title: "Home",
+        path: "/",
+        icon: "icon home-icon",
+        cName: "nav-text",
     },
     {
         title: 'Search',
         path: '/search',
-        icon: Search
-    }    
-]
+        icon: "icon search-icon",
+        cName: "nav-text",
+    }
+];

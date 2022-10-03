@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import "./styles/index.css";
+
 
 interface IFormInput {
   Email: string;
