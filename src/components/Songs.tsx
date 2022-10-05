@@ -1,45 +1,39 @@
 import React from 'react'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import NOIMG from "../assets/picture-no-album.png"
+import "../styles/Search.css"
 
 export const Songs = ({ songs, loading }: any) => {
 	//console.log('Songs length =>', songs.length)
-	if(loading){
+	if (loading) {
 		return (<h2> Loading...</h2>);
 	}
 	if (songs.length === 0) return null
 
-	const SongsRow = (song: any, index: number) => {
-
-		return (
-			<tr key={index} className={index % 2 === 0 ? 'odd' : 'even'}>
-				<td>{song.id}</td>
-				<td>{song.title}</td>
-				<td>{song.artist}</td>
-				<td>{song.album}</td>
-				<td>{song.genre}</td>
-
-			</tr>
-		)
+	// replace image function
+	const replaceImage = (event: any) => {
+		event.target.src = NOIMG;
 	}
-
-	const songTable = songs.map((song: any, index: number) => SongsRow(song, index))
+	const songsSorting = [...songs].sort((a, b) => a.title.localeCompare(b.title));
 
 	return (
-		<div className="container">
-			<h2>Songs</h2>
-			<table className="table table-bordered">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Title</th>
-						<th>Artist</th>
-						<th>Album</th>
-						<th>Genre</th>
-					</tr>
-				</thead>
-				<tbody>
-					{songTable}
-				</tbody>
-			</table>
-		</div>
+			<Col>
+				{
+					songsSorting.map(((song: any) => (
+
+						<Card className='card-search-body' style={{ width: "25rem" }}>
+							<Card.Img className='card-search-img' src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
+							<Card.Body>
+								<Card.Title className='card-search-title'>{song.title}</Card.Title>
+								<Card.Text className='card-search-text'>{song.artist}</Card.Text>
+							</Card.Body>
+						</Card>
+
+
+
+					)))
+				}
+			</Col>
 	)
 }

@@ -6,7 +6,8 @@ import NOIMG from "../assets/picture-no-album.png"
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-
+import "../styles/App.css"
+import Label from "react-bootstrap/FormLabel";
 
 function Home() {
 
@@ -50,19 +51,20 @@ function Home() {
     event.target.src = NOIMG;
   }
 
-  // replace image function
-  const defaultImage = (event: any) => {
-    //replacement of broken Image
-    event.target.src = NOIMG;
-  }
+  // Sorting
+  const albumSorting = [...uniqueAlbums].sort((a, b) => a.album.localeCompare(b.album));
+  const artistSorting = [...uniqueAlbums].sort((a, b) => a.artist.localeCompare(b.artist));
+  const genreSorting = [...genres].sort((a, b) => a.localeCompare(b));
+
 
   return (
-    <main className="container">
-      <div className="container-fluid body-content">
+    <main className="container-fluid body-content">
+     
+        <br />
+        <h1 style={{textAlign:"left"}}> Artist</h1>
         <Row xs={1} md={4} className="g-4">
-
           {
-            uniqueArtist.map((song => (<Col id={song.id}>
+            artistSorting.map((song => (<Col id={song.id}>
               <Card>
                 <Card.Img className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
                 <Card.Body>
@@ -72,9 +74,11 @@ function Home() {
             </Col>)))
           }
         </Row>
+        <br />
+        <h1 style={{textAlign:"left"}}> Album</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            uniqueAlbums.map((song => (<Col id={song.id}>
+            albumSorting.map((song => (<Col id={song.id}>
               <Card>
                 <Card.Img className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
                 <Card.Body>
@@ -84,9 +88,11 @@ function Home() {
             </Col>)))
           }
         </Row>
+        <br />
+        <h1 style={{textAlign:"left"}}> Genre</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            genres.map((genre => (<Col id={genre}>
+            genreSorting.map((genre => (<Col id={genre}>
               <Card>
                 <Card.Img variant="top" src={NOIMG} />
                 <Card.Body>
@@ -97,7 +103,6 @@ function Home() {
           }
 
         </Row>
-      </div>
     </main>
   );
 }

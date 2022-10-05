@@ -13,7 +13,7 @@ export const Sidebar: React.FunctionComponent = () => {
             <nav id="sidebarMenu" className="collapse d-lg-block sidebar collapse">
                 <ul className="nav-menu-items" >
                     <li className="navbar-toggle">
-                        <Link to="#" className="menu-bars">
+                        <Link to="/" className="menu-bars">
                             <img src={Logo} className="imglogo" />
                         </Link>
                     </li>

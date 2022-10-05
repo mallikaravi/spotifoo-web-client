@@ -11,7 +11,10 @@ export class AppService {
 		return await response.json();
 	}
 
-	
+	public async search(keyword: any): Promise<any> {
+		const response = await fetch('/music?search=' + keyword);
+		return await response.json();
+	}
 
 	public async filterByArtist(keyword: any): Promise<any> {
 		const response = await fetch('/music?filter=artist&search=' + keyword);

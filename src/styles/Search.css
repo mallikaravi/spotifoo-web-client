@@ -1,0 +1,34 @@
+.card-search-body {
+    background-color: var(--gray-darkest);
+    flex-direction: row;
+    margin: 10px 0 0 0;
+}
+
+.card-search-title {
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.card-search-text {
+    position: absolute;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #A3A3A3;
+    padding: 10px 0 0 0 ;
+
+}
+
+.card-search-img {
+    border-top-right-radius: 0;
+    
+    width: 40%;
+}
