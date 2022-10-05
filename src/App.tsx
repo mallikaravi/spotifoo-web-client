@@ -10,15 +10,24 @@ import { Footer } from "./components/Footer";
 import { useEffect, useState } from "react";
 
 function App() {
+
+  // Selected Song
+  const [selectedSong, setSelectedSong] = useState<string>("");
+
+  useEffect(() => {
+    //Trigger Footer
+    alert("selectedSong"+selectedSong)
+   } , [selectedSong])
+
   return (
     <>
       <Router>
         <Sidebar />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home onSelection={(songId) => setSelectedSong(selectedSong)} />} />
           <Route path='/search' element={<Search />} />
         </Routes>
-        <Footer />
+        <Footer selectedSong={selectedSong}/>
       </Router>
     </>
   );

@@ -20,14 +20,13 @@ export const Songs = ({ songs, loading }: any) => {
 		alert("[Songs] Play Song (Implementation in progress)")
 	}
 	return (
-		<>
 			<Col>
 				{
-					songsSorting.map(((song: any) => (
+					songsSorting.map(((song: any, index:number) => (
 
-						<Card className='card-search-body' style={{ width: "25rem" }} onClick={(event)=>playSong(event)}>
-							<Card.Img className='card-search-img' src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
-							<Card.Body>
+						<Card key={song.id} className='card-search-body' style={{ width: "25rem" }} onClick={(event)=>playSong(event)}>
+							<Card.Img key={song.id} className='card-search-img' src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
+							<Card.Body key={index}>
 								<Card.Title className='card-search-title'>{song.title}</Card.Title>
 								<Card.Text className='card-search-text'>{song.artist}</Card.Text>
 							</Card.Body>
@@ -38,6 +37,5 @@ export const Songs = ({ songs, loading }: any) => {
 					)))
 				}
 			</Col>
-		</>
 	)
 }

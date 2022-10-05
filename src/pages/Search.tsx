@@ -7,7 +7,7 @@ import SearchInput from "../components/SearchInput";
 
 import { useEffect, useState } from "react";
 
-export const Search= ({selectedSong}:any)=> {
+export const Search = () => {
 
   const appService = new AppService();
 
@@ -19,40 +19,38 @@ export const Search= ({selectedSong}:any)=> {
   const [currentPage, setCurrentPage] = useState(1)
   const [songsPerPage] = useState(10)
 
-
-
-  const pagination = async () => {
-    setLoading(true);
-    // Getting all the songs to know the total songs count
-    const totalSongs = await appService.getAllSongs();
-    setTotalSongs(totalSongs);
-    const songs = await appService.pagination(currentPage, songsPerPage);
-    setSongs(songs);
-    setLoading(false);
-  };
-
-
+// Search By Title
+const [query, setQuery] = useState<string>("");
 
   const paginate = (pageNumber: any) => {
     setCurrentPage(pageNumber)
-    pagination();
   }
 
+  useEffect(() => {
+    const pagination = async () => {
+      setLoading(true);
+      // Getting all the songs to know the total songs count
+      const totalSongs = await appService.getAllSongs();
+      setTotalSongs(totalSongs);
+      const songs = await appService.pagination(currentPage, songsPerPage);
+      setSongs(songs);
+      setLoading(false);
+    }
+    if(query.length==0) pagination();
+  }, [currentPage])
 
-  // Search By Title
-  const [query, setQuery] = useState<string>("");
+
+  
 
   useEffect(() => {
-    const filterByTitle = async () => {
+    const search = async () => {
       const songs = await appService.search(query);
       setSongs(songs);
       setTotalSongs(songs)
+      alert("Search" + query)
     };
     if (query.length > 0) {
-      filterByTitle();
-    }
-    else {
-      pagination();
+      search();
     }
   }, [query])
 
@@ -61,7 +59,7 @@ export const Search= ({selectedSong}:any)=> {
   return (
     <main className="container-fluid body-content">
       <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
-      <Songs songs={songs} loading={loading} selectedSong={selectedSong}/>
+      <Songs songs={songs} loading={loading} />
       <Pagination songsPerPage={songsPerPage} totalSongs={totalSongs.length} paginate={paginate} />
     </main>
   );

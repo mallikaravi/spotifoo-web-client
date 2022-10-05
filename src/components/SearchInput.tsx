@@ -14,7 +14,7 @@ export interface ISearchProps {
 export default function SearchInput(props: ISearchProps) {
   const [searchQuery, setSearchQuery] = useState<string | undefined>();
   const { onChangeSearchQuery } = props;
-  const debouncedSearchQuery = useDebounce(searchQuery, 250);
+  const debouncedSearchQuery = useDebounce(searchQuery, 50);
 
   useEffect(() => {
     if (debouncedSearchQuery !== undefined) {

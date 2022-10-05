@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     background-color: var(--gray-dark);
     width: 100%;
-    height: 14vh;
+    height: 10vh;
     position: fixed; 
     z-index: 1;
     align-items: center;
@@ -13,7 +13,7 @@ export const Container = styled.div`
     
     .musicDiv {
         width: 400px;
-        margin-top: 5px;
+        margin-top: -10px;
         cursor: pointer;
     }
 
@@ -80,11 +80,12 @@ export const Container = styled.div`
         align-items: center;
         width: 100%;
         margin: auto;
+        margin-top: 15px;
+
 
         button {
             border: none;
             outline: none;
-            border-radius: 50%;
             background-color: transparent;
             cursor: pointer;
         }
@@ -113,7 +114,7 @@ export const Container = styled.div`
         align-items: center;
         width: 100%;
         position: relative;
-        bottom: 8px;
+        bottom: 15px;
         right: 10px;
 
         .Pduration {

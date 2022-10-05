@@ -7,9 +7,24 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "../styles/App.css"
-import Label from "react-bootstrap/FormLabel";
+import useDebounce from "../hooks/useDebounce";
 
-export const Home = ()=> {
+export interface ISongSelection {
+  onSelection: (songId: string) => void;
+}
+
+export const Home = (selection: ISongSelection)=> {
+
+  const [selectedSong, setSelectedSong] = useState<string | undefined>();
+  const { onSelection } = selection;
+  const debouncedSelection = useDebounce(selectedSong, 50);
+
+  useEffect(() => {
+    if (debouncedSelection !== undefined) {
+      onSelection(debouncedSelection);
+    }
+  }, [debouncedSelection, onSelection]);
+
 
   const appService = new AppService();
   const [songs, setSongs] = useState<any[]>([]);
@@ -33,7 +48,8 @@ export const Home = ()=> {
   }, [])
 
   const playSong=(event:any) => {
-		alert("[HOME] Play Song (Implementaion in progress)")
+    setSelectedSong(event.target.key)
+		alert("[HOME] Play Song (Implementation in progress)")
 	}
 
   // replace image function
@@ -68,10 +84,10 @@ export const Home = ()=> {
         <h1 style={{textAlign:"left"}}> Artist</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            artistSorting.map((song => (<Col id={song.id} property="homecard">
-              <Card onClick={(event)=>playSong(event)}>
-                <Card.Img className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
-                <Card.Body>
+            artistSorting.map(((song:any, index:number )=> (<Col id={song.id} property="homecard">
+              <Card key={song.id} onClick={(event)=>playSong(event)}>
+                <Card.Img   className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
+                <Card.Body key={index}>
                   <Card.Title>{song.artist}</Card.Title>
                 </Card.Body>
               </Card>
@@ -82,10 +98,10 @@ export const Home = ()=> {
         <h1 style={{textAlign:"left"}}> Album</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            albumSorting.map((song => (<Col id={song.id} property="homecard">
-              <Card onClick={(event)=>playSong(event)}>
-                <Card.Img className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
-                <Card.Body>
+            albumSorting.map(((song:any, index:number ) => (<Col id={song.id} property="homecard">
+              <Card key={song.id} onClick={(event)=>playSong(event)}>
+                <Card.Img  className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
+                <Card.Body key={index} >
                   <Card.Title>{song.album}</Card.Title>
                 </Card.Body>
               </Card>
@@ -96,10 +112,10 @@ export const Home = ()=> {
         <h1 style={{textAlign:"left"}}> Genre</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            genreSorting.map((genre => (<Col id={genre}>
-              <Card property="homecard" onClick={(event)=>playSong(event)}>
+            genreSorting.map(((genre:any, index:number ) => (<Col id={genre}>
+              <Card key={genre} property="homecard" onClick={(event)=>playSong(event)}>
                 <Card.Img variant="top" src={NOIMG} />
-                <Card.Body>
+                <Card.Body key={index}>
                   <Card.Title>{genre}</Card.Title>
                 </Card.Body>
               </Card>
