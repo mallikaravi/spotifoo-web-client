@@ -42,15 +42,6 @@
   }
 }
 
-.imglogo {
-  position: absolute;
-  left: 16%;
-  right: 25.33%;
-  top: 4.44%;
-  bottom: 91.11%;
-  width: 150px;
-}
-
 body {
   background-color: var(--green);
 }
