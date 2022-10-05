@@ -47,7 +47,6 @@ const [query, setQuery] = useState<string>("");
       const songs = await appService.search(query);
       setSongs(songs);
       setTotalSongs(songs)
-      alert("Search" + query)
     };
     if (query.length > 0) {
       search();
