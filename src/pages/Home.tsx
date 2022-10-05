@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import "../styles/App.css"
 import Label from "react-bootstrap/FormLabel";
 
-function Home() {
+export const Home = ()=> {
 
   const appService = new AppService();
   const [songs, setSongs] = useState<any[]>([]);
@@ -32,6 +32,15 @@ function Home() {
     getAllGenres();
   }, [])
 
+  const playSong=(event:any) => {
+		alert("[HOME] Play Song (Implementaion in progress)")
+	}
+
+  // replace image function
+  const replaceImage = (event: any) => {
+    event.target.src = NOIMG;
+  }
+
   const artistset = new Set()
   const uniqueArtist = songs.filter(song => {
     const alreadyHas = artistset.has(song.artist)
@@ -46,11 +55,6 @@ function Home() {
     return !alreadyHas
   })
 
-  // replace image function
-  const replaceImage = (event: any) => {
-    event.target.src = NOIMG;
-  }
-
   // Sorting
   const albumSorting = [...uniqueAlbums].sort((a, b) => a.album.localeCompare(b.album));
   const artistSorting = [...uniqueAlbums].sort((a, b) => a.artist.localeCompare(b.artist));
@@ -64,8 +68,8 @@ function Home() {
         <h1 style={{textAlign:"left"}}> Artist</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            artistSorting.map((song => (<Col id={song.id}>
-              <Card>
+            artistSorting.map((song => (<Col id={song.id} property="homecard">
+              <Card onClick={(event)=>playSong(event)}>
                 <Card.Img className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
                 <Card.Body>
                   <Card.Title>{song.artist}</Card.Title>
@@ -78,8 +82,8 @@ function Home() {
         <h1 style={{textAlign:"left"}}> Album</h1>
         <Row xs={1} md={4} className="g-4">
           {
-            albumSorting.map((song => (<Col id={song.id}>
-              <Card>
+            albumSorting.map((song => (<Col id={song.id} property="homecard">
+              <Card onClick={(event)=>playSong(event)}>
                 <Card.Img className="card-img-top" src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG} onError={(event) => replaceImage(event)} />
                 <Card.Body>
                   <Card.Title>{song.album}</Card.Title>
@@ -93,7 +97,7 @@ function Home() {
         <Row xs={1} md={4} className="g-4">
           {
             genreSorting.map((genre => (<Col id={genre}>
-              <Card>
+              <Card property="homecard" onClick={(event)=>playSong(event)}>
                 <Card.Img variant="top" src={NOIMG} />
                 <Card.Body>
                   <Card.Title>{genre}</Card.Title>
@@ -106,5 +110,3 @@ function Home() {
     </main>
   );
 }
-
-export default Home

@@ -1,9 +1,9 @@
 import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {Sidebar} from './components/Sidebar'
+import { Sidebar } from './components/Sidebar'
 
-import Home from './pages/Home';
-import Search from './pages/Search';
+import { Home } from './pages/Home';
+import { Search } from './pages/Search';
 
 import { Footer } from "./components/Footer";
 

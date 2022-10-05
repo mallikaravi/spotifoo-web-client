@@ -7,7 +7,7 @@ import SearchInput from "../components/SearchInput";
 
 import { useEffect, useState } from "react";
 
-function Search() {
+export const Search= ({selectedSong}:any)=> {
 
   const appService = new AppService();
 
@@ -61,10 +61,8 @@ function Search() {
   return (
     <main className="container-fluid body-content">
       <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
-      <Songs songs={songs} loading={loading} />
+      <Songs songs={songs} loading={loading} selectedSong={selectedSong}/>
       <Pagination songsPerPage={songsPerPage} totalSongs={totalSongs.length} paginate={paginate} />
     </main>
   );
 }
-
-export default Search

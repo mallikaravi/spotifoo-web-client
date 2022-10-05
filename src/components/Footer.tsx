@@ -1,13 +1,15 @@
 import React from 'react'
+import {useEffect, useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Player } from './player';
 
-export const Footer = ({ props }: any) => {
+export const Footer = () => {
   return (
     <>
       <footer className="footer fixed-bottom ">
-        <div className="container">
-          <span className="text-muted">Place sticky footer content here.</span>
-        </div>
+        <Player 
+            id={1}
+          /> 
       </footer>
     </>
   );
