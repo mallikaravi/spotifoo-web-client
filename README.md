@@ -43,6 +43,8 @@ $ npm start
 ## Component Tree
 It visualizes the overall hierarchy of the project
 
+https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/Component-Hierarchy.pdf
+
 ## Tool used for project management
 JIRA tool is used for this project, mainly maintaining the recipe-manager application backlogs. In sort following activities are done
 - EPIC
