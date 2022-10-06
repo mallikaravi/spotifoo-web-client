@@ -38,6 +38,7 @@ $ npm install
 $ npm start
 
 ```
+* The development server runs on port 3000.
 ## Implementation and Design
 
 ## Component Tree
