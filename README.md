@@ -39,6 +39,7 @@ $ npm start
 
 ```
 * The development server runs on port 3000.
+  http://localhost:8080
 ## Implementation and Design
 
 ## Component Tree
