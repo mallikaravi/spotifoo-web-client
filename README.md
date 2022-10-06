@@ -3,7 +3,7 @@
  Spotifoo-web-client is a music app.This app  is made with React and Typescript. It uses Restful API to generate Artists,Albums and Genre. User can search for an Album,Artist and Genre.To generate starting files ,I have used the following command.
 
 ```bash
-$ npm create -react-app "our app name" --template typescript
+$ npx create -react-app "our app name" --template typescript
 ```
 # Project setup
 In order to connect your frontend with our backend, you need to follow these instructions. Otherwise you won't be able to get the songs or their album covers.
