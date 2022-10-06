@@ -8,11 +8,11 @@ In order to connect your frontend with our backend, you need to follow these ins
 
 * Install the latest Node.js LTS version.The link is 
 
-https://nodejs.org/en/download/
+   https://nodejs.org/en/download/
 
 * Clone the server repository. the link to this is
 
- https://github.com/mallikaravi/spotifoo-web-server.git
+   https://github.com/mallikaravi/spotifoo-web-server.git
 
 * Run npm install in the project root directory.
 
