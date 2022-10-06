@@ -22,6 +22,15 @@ In order to connect your frontend with our backend, you need to follow these ins
 
 * The server will now start on the url http://localhost:8080 use this url to send your requests.
 
+## Technology
+The following technologies are used in designing and developing the application.
+
+1. React-FrameWork for UI
+2. TypeScript-Coding language
+3. Visual Studio Code-IDE purpose
+4. Microsoft Visio - UML Diagram tool
+
+
 ## Build and Run
 ```
 $ git clone https://github.com/mallikaravi/spotifoo-web-client.git
