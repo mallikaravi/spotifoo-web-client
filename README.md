@@ -19,3 +19,11 @@ In order to connect your frontend with our backend, you need to follow these ins
 * Run npm run start to start the server.
 
 * The server will now start on the url http://localhost:8080 use this url to send your requests.
+
+## Build and Run
+```
+$ git clone https://github.com/mallikaravi/MiNet.git
+$ npm install
+$ npm start
+
+```
