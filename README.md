@@ -55,3 +55,4 @@ JIRA tool is used for this project, mainly maintaining the recipe-manager applic
 ### Link to JIRA Activities
 
  ## Future Enhancement
+ * Introducing play and pause actions so that a song can be played and paused.
