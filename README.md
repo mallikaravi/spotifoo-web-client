@@ -40,7 +40,7 @@ $ npm start
 ```
 * The development server runs on port 3000.
 
-  ## Implementation and Design
+## Implementation and Design
 
 ## Component Tree
 It visualizes the overall hierarchy of the project
