@@ -24,7 +24,7 @@ In order to connect your frontend with our backend, you need to follow these ins
 
 ## Build and Run
 ```
-$ git clone https://github.com/mallikaravi/MiNet.git
+$ git clone https://github.com/mallikaravi/spotifoo-web-client.git
 $ npm install
 $ npm start
 
