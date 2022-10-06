@@ -1,9 +1,11 @@
 # spotifoo-web-client
-This app  is made with React and Typescript. It uses Restful API to generate Artists,Albums and Genre. User can search for an Album,Artist and Genre.To generate starting files ,I have used the following command.
+# About 
+ Spotifoo-web-client is a music app.This app  is made with React and Typescript. It uses Restful API to generate Artists,Albums and Genre. User can search for an Album,Artist and Genre.To generate starting files ,I have used the following command.
 
 ```bash
 $ npm create -react-app "our app name" --template typescript
 ```
+# Project setup
 In order to connect your frontend with our backend, you need to follow these instructions. Otherwise you won't be able to get the songs or their album covers.
 
 * Install the latest Node.js LTS version.The link is 
@@ -27,3 +29,18 @@ $ npm install
 $ npm start
 
 ```
+## Implementation and Design
+
+## Component Tree
+It visualizes the overall hierarchy of the project
+
+## Tool used for project management
+JIRA tool is used for this project, mainly maintaining the recipe-manager application backlogs. In sort following activities are done
+- EPIC
+- User stories
+- Sprint handling
+- etc.
+
+### Link to JIRA Activities
+
+ ## Future Enhancement
