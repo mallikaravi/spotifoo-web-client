@@ -25,9 +25,9 @@ In order to connect your frontend with our backend, you need to follow these ins
 ## Technology
 The following technologies are used in designing and developing the application.
 
-1. React-FrameWork for UI
-2. TypeScript-Coding language
-3. Visual Studio Code-IDE purpose
+1. React- FrameWork for UI
+2. TypeScript- Coding language
+3. Visual Studio Code- IDE purpose
 4. Microsoft Visio - UML Diagram tool
 
 
