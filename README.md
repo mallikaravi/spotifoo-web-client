@@ -42,6 +42,8 @@ $ npm start
 
 ## Implementation and Design
 
+https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/spotifoo-jira-dashboard.pdf
+
 ## Component Tree
 It visualizes the overall hierarchy of the project
 
@@ -57,6 +59,8 @@ JIRA tool is used for this project, mainly maintaining the spotifoo web client a
 - etc.
 
 ### Link to JIRA Activities
+
+https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/spotifoo-jira-dashboard.pdf
 
  ## Future Enhancement
  * Introducing play and pause actions so that a song can be played and paused.
