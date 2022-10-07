@@ -1,7 +1,9 @@
 .card-search-body {
-    background-color: var(--gray-darkest);
+    background-color: var(--gray-dark);
     flex-direction: row;
     margin: 10px 0 0 0;
+    padding: 1px 1px 1px 10px;
+    --bs-card-border-color: none;
 }
 
 .card-search-title {

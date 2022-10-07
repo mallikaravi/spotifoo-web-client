@@ -57,7 +57,7 @@ body {
 @media (min-width: 991.98px) {
   main {
     padding-left: 240px;
-    background-color: var(--gray-darkest);
+    background-color: var(--gray-dark);
   }
 }
 
@@ -70,7 +70,7 @@ body {
 
 
 .card {
-  background-color: var(--gray-dark);
+  background-color: var(--light-gray);
   border-radius: 8px;
   flex: none;
   order: 0;
@@ -93,5 +93,7 @@ body {
   height: 100px;
   bottom: 0;
   background-color: var(--gray-dark);
-  border-top: 5px solid #A3A3A3;
+  border-top-width: 5px;
+  border-top-style:  solid ;
+  border-top-color: var(--light-gray);
 }
