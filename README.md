@@ -25,9 +25,9 @@ In order to connect your frontend with our backend, you need to follow these ins
 ## Technology
 The following technologies are used in designing and developing the application.
 
-1. React-FrameWork for UI
-2. TypeScript-Coding language
-3. Visual Studio Code-IDE purpose
+1. React- FrameWork for UI
+2. TypeScript- Coding language
+3. Visual Studio Code- IDE purpose
 4. Microsoft Visio - UML Diagram tool
 
 
@@ -38,13 +38,19 @@ $ npm install
 $ npm start
 
 ```
+* The development server runs on port 3000.
+
 ## Implementation and Design
 
 ## Component Tree
 It visualizes the overall hierarchy of the project
 
+<img src="design/Component-Hierarchy.pdf " width="450" height="250">
+
+https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/Component-Hierarchy.pdf
+
 ## Tool used for project management
-JIRA tool is used for this project, mainly maintaining the recipe-manager application backlogs. In sort following activities are done
+JIRA tool is used for this project, mainly maintaining the spotifoo web client application backlogs. In sort following activities are done
 - EPIC
 - User stories
 - Sprint handling
@@ -53,3 +59,4 @@ JIRA tool is used for this project, mainly maintaining the recipe-manager applic
 ### Link to JIRA Activities
 
  ## Future Enhancement
+ * Introducing play and pause actions so that a song can be played and paused.
