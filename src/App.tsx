@@ -5,7 +5,6 @@ import { Sidebar } from './components/Sidebar'
 import { Home } from './pages/Home';
 import { Search } from './pages/Search';
 
-import { Footer } from "./components/Footer";
 
 import { useEffect, useState } from "react";
 
@@ -24,10 +23,9 @@ function App() {
       <Router>
         <Sidebar />
         <Routes>
-          <Route path='/' element={<Home onSelection={(songId) => setSelectedSong(selectedSong)} />} />
+          <Route path='/' element={<Home />} />
           <Route path='/search' element={<Search />} />
         </Routes>
-        <Footer selectedSong={selectedSong}/>
       </Router>
     </>
   );

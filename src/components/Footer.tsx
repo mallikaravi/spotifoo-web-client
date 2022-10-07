@@ -10,27 +10,48 @@ import { AppService } from "../services/app.service";
 import NOIMG from "../assets/picture-no-album.png";
 
 type Props = {
-  selectedSong: string;
+  selectedSong: string | undefined;
 };
 
 export const Footer = ({ selectedSong }: Props) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [duration, setDuration] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(0);
+  const [volume, setVolume] = useState<string>('1')
 
   const audioTag = useRef(null);
   const progressBar = useRef(null);
   const animationRef = useRef(null);
 
-  const [songs, setSongs] = useState<any[]>([]);
-  const appService = new AppService();
+
   useEffect(() => {
-    const getAllSongs = async () => {
-      const songs = await appService.getAllSongs();
-      setSongs(songs);
-    };
-    getAllSongs();
-  }, []);
+    if (selectedSong !== '' && selectedSong !== undefined) {
+      if (isPlaying) {
+        audioTag.current.play()
+        animationRef.current = requestAnimationFrame(whilePlaying)
+        audioTag.current.volume = volume
+
+        audioTag.current.muted = false
+
+        const interval = setInterval(() => {
+          const seconds = Math.floor(audioTag.current.duration)
+          setDuration(seconds)
+
+        }, 1000)
+
+        setInterval(() => {
+          if (duration > 0 || duration !== undefined) {
+            clearInterval(interval)
+          }
+        }, 1100)
+
+      } else {
+        audioTag.current.pause()
+        audioTag.current.volume = volume
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
+  }, [[]])
 
   const calculateDuration = (sec: number) => {
     const minutes = Math.floor(sec / 60);
@@ -41,7 +62,6 @@ export const Footer = ({ selectedSong }: Props) => {
     return `${newMinutes}:${newSeconds}`;
   };
 
-  //alert(selectedSong)
   const whilePlaying = () => {
     progressBar.current.value = audioTag?.current?.currentTime;
     animationRef.current = requestAnimationFrame(whilePlaying);
@@ -57,7 +77,18 @@ export const Footer = ({ selectedSong }: Props) => {
     setCurrentTime(progressBar.current.value);
   };
 
-  const defaultSongInfo = (
+  // Fetch all the songs
+  const [songs, setSongs] = useState<any[]>([]);
+  const appService = new AppService();
+  useEffect(() => {
+    const getAllSongs = async () => {
+      const songs = await appService.getAllSongs();
+      setSongs(songs);
+    };
+    getAllSongs();
+  }, []);
+
+  let songInfo = (
     <div className="music" key="key">
       <img src={NOIMG} />
       <div>
@@ -66,34 +97,35 @@ export const Footer = ({ selectedSong }: Props) => {
       </div>
     </div>
   );
-  const songInfo = songs.map((song) =>
-    selectedSong === song.id ? (
-      <div className="music" key={song.id}>
-        <>
-          <img src={song.pathToAlbum} />
-          <div>
-            <h1>{song.name}</h1>
-            <h3>{song.artist}</h3>
-          </div>
-        </>
-        <audio src={song.pathToMusic} ref={audioTag} />
-      </div>
-    ) : undefined
-  );
-  const songDetails = songInfo == undefined ? songInfo : defaultSongInfo;
+  songs.forEach(function (song) {
+    if (song.id != undefined && selectedSong !== undefined && Number(song.id) == Number(selectedSong)) {
+      songInfo = (
+        <div className="music" key={song.id}>
+          <>
+            <img src={song.pathToAlbum} />
+            <div>
+              <h1>{song.title}</h1>
+              <h3>{song.artist}</h3>
+            </div>
+          </>
+          <audio src={song.pathToMusic} ref={audioTag} />
+        </div>
+      )
+    }
+  }
+  )
   return (
     <>
       <footer className="footer fixed-bottom ">
         <C.Container>
-          <div className="musicDiv">{songDetails}</div>
+          <div className="musicDiv">{songInfo}</div>
           <div className="player">
             <div className="inputButtons">
               <div className="buttons">
                 <button
-                  className="playPause"
-                  onClick={() => setIsPlaying(!isPlaying)}
-                >
-                  <Play width="2rem" fill="white" className="menuIcon" />
+                  className='playPause'
+                  onClick={() => setIsPlaying(!isPlaying)}>
+                  {isPlaying ? <Pause width="2rem" fill="white" className="menuIcon" /> : <Play width="2rem" fill="white" className="menuIcon" />}
                 </button>
               </div>
               <div className="progressBar">

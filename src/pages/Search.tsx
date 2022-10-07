@@ -4,8 +4,13 @@ import { Pagination } from "../components/Pagination";
 import SearchInput from "../components/SearchInput";
 
 import { useEffect, useState } from "react";
+import { Footer } from "../components/Footer";
+
+
 
 export const Search = () => {
+  const [selectedSong, setSelectedSong] = useState<string>();
+  
   const appService = new AppService();
 
   const [songs, setSongs] = useState([]);
@@ -48,14 +53,17 @@ export const Search = () => {
   }, [query]);
 
   return (
+    <>
     <main className="container-fluid body-content">
       <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
-      <SongsList songs={songs} loading={loading} />
+      <SongsList songs={songs} loading={loading} onSelection={(selectedSong:any) => setSelectedSong(selectedSong)}/>
       <Pagination
         songsPerPage={songsPerPage}
         totalSongs={totalSongs.length}
         paginate={paginate}
       />
     </main>
+     <Footer selectedSong={selectedSong} />
+     </>
   );
 };

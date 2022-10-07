@@ -8,21 +8,10 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import "../styles/App.css";
 import useDebounce from "../hooks/useDebounce";
+import { Footer } from "../components/Footer";
 
-export interface ISongSelection {
-  onSelection: (songId: string) => void;
-}
-
-export const Home = (selection: ISongSelection) => {
+export const Home = () => {
   const [selectedSong, setSelectedSong] = useState<string | undefined>();
-  const { onSelection } = selection;
-  const debouncedSelection = useDebounce(selectedSong, 50);
-
-  useEffect(() => {
-    if (debouncedSelection !== undefined) {
-      onSelection(debouncedSelection);
-    }
-  }, [debouncedSelection, onSelection]);
 
   const appService = new AppService();
   const [songs, setSongs] = useState<any[]>([]);
@@ -44,9 +33,9 @@ export const Home = (selection: ISongSelection) => {
     getAllGenres();
   }, []);
 
-  const playSong = (event: any) => {
-    setSelectedSong(event.target.key);
-    alert("[HOME] Play Song (Implementation in progress)");
+
+  const handleClick = (event: any) => {
+    setSelectedSong(event.target.id);
   };
 
   // replace image function
@@ -78,61 +67,64 @@ export const Home = (selection: ISongSelection) => {
   const genreSorting = [...genres].sort((a, b) => a.localeCompare(b));
 
   return (
-    <main className="container-fluid body-content">
-      <br />
-      <h1 style={{ textAlign: "left" , color:"white"}}> Artist</h1>
-      <Row xs={1} md={4} className="g-4">
-        {artistSorting.map((song: any, index: number) => (
-          <Col id={song.id} property="homecard">
-            <Card key={song.id} onClick={(event) => playSong(event)}>
-              <Card.Img
-                className="card-img-top"
-                src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG}
-                onError={(event) => replaceImage(event)}
-              />
-              <Card.Body key={index}>
-                <Card.Title>{song.artist}</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <br />
-      <h1 style={{ textAlign: "left" , color:"white"}}> Albums</h1>
-      <Row xs={1} md={4} className="g-4">
-        {albumSorting.map((song: any, index: number) => (
-          <Col id={song.id} property="homecard">
-            <Card key={song.id} onClick={(event) => playSong(event)}>
-              <Card.Img
-                className="card-img-top"
-                src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG}
-                onError={(event) => replaceImage(event)}
-              />
-              <Card.Body key={index}>
-                <Card.Title>{song.album}</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <br />
-      <h1 style={{ textAlign: "left", color:"white" }}> Genres</h1>
-      <Row xs={1} md={4} className="g-4">
-        {genreSorting.map((genre: any, index: number) => (
-          <Col id={genre}>
-            <Card
-              key={genre}
-              property="homecard"
-              onClick={(event) => playSong(event)}
-            >
-              <Card.Img variant="top" src={NOIMG} />
-              <Card.Body key={index}>
-                <Card.Title>{genre}</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </main>
+    <>
+      <main className="container-fluid body-content">
+        <br />
+        <h1 style={{ textAlign: "left", color: "white" }}> Artist</h1>
+        <Row xs={1} md={4} className="g-4">
+          {artistSorting.map((song: any, index: number) => (
+            <Col property="homecard">
+              <Card key={song.id} onClick={handleClick}>
+                <Card.Img id={song.id}
+                  className="card-img-top"
+                  src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG}
+                  onError={(event) => replaceImage(event)}
+                />
+                <Card.Body key={index}>
+                  <Card.Title id={song.id}>{song.artist}</Card.Title>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        <br />
+        <h1 style={{ textAlign: "left", color: "white" }}> Albums</h1>
+        <Row xs={1} md={4} className="g-4">
+          {albumSorting.map((song: any, index: number) => (
+            <Col id={song.id} property="homecard">
+              <Card key={song.id} onClick={handleClick}>
+                <Card.Img id={song.id}
+                  className="card-img-top"
+                  src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG}
+                  onError={(event) => replaceImage(event)}
+                />
+                <Card.Body key={index}>
+                  <Card.Title id={song.id}>{song.album}</Card.Title>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        <br />
+        <h1 style={{ textAlign: "left", color: "white" }}> Genres</h1>
+        <Row xs={1} md={4} className="g-4">
+          {genreSorting.map((genre: any, index: number) => (
+            <Col id={genre}>
+              <Card
+                key={genre}
+                property="homecard"
+                onClick={handleClick}
+              >
+                <Card.Img variant="top" src={NOIMG} />
+                <Card.Body key={index}>
+                  <Card.Title>{genre}</Card.Title>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </main>
+      <Footer selectedSong={selectedSong} />
+    </>
   );
 };
