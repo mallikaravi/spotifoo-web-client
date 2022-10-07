@@ -44,6 +44,7 @@ $ npm start
 
 ## Component Tree
 It visualizes the overall hierarchy of the project
+<img src="design/Usecase-ATM.png " width="450" height="250">
 
 https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/Component-Hierarchy.pdf
 
