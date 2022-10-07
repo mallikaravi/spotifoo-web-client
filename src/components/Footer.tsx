@@ -23,28 +23,28 @@ export const Footer = ({ selectedSong }: Props) => {
   const progressBar = useRef(null);
   const animationRef = useRef(null);
 
-
   useEffect(() => {
     if (selectedSong !== '' && selectedSong !== undefined) {
       if (isPlaying) {
         audioTag.current.play()
         animationRef.current = requestAnimationFrame(whilePlaying)
         audioTag.current.volume = volume
-
+        
         audioTag.current.muted = false
-
+        
         const interval = setInterval(() => {
           const seconds = Math.floor(audioTag.current.duration)
           setDuration(seconds)
-
+          
         }, 1000)
-
+        
         setInterval(() => {
           if (duration > 0 || duration !== undefined) {
             clearInterval(interval)
           }
         }, 1100)
-
+        
+        console.log(audioTag)
       } else {
         audioTag.current.pause()
         audioTag.current.volume = volume
@@ -88,6 +88,11 @@ export const Footer = ({ selectedSong }: Props) => {
     getAllSongs();
   }, []);
 
+  // replace image function
+  const replaceImage = (event: any) => {
+    event.target.src = NOIMG;
+  };
+
   let songInfo = (
     <div className="music" key="key">
       <img src={NOIMG} />
@@ -102,7 +107,7 @@ export const Footer = ({ selectedSong }: Props) => {
       songInfo = (
         <div className="music" key={song.id}>
           <>
-            <img src={song.pathToAlbum} />
+            <img src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG}  onError={(event) => replaceImage(event)} />
             <div>
               <h1>{song.title}</h1>
               <h3>{song.artist}</h3>

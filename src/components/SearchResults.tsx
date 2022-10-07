@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import NOIMG from "../assets/picture-no-album.png";
 import "../styles/Search.css";
 
-export const CardLayout = ({ songs, loading }: any) => {
+export const CardLayout = ({ songs, loading , handleClick}: any) => {
   //console.log('Songs length =>', songs.length)
   if (loading) {
     return <h2> Loading...</h2>;
@@ -18,27 +18,25 @@ export const CardLayout = ({ songs, loading }: any) => {
   const songsSorting = [...songs].sort((a, b) =>
     a.title.localeCompare(b.title)
   );
-  const playSong = (event: any) => {
-    alert("[Songs] Play Song (Implementation in progress)");
-  };
+  
   return (
     <Col>
       {songsSorting.map((song: any, index: number) => (
         <Card
-          key={song.id}
+          id={song.id}
           className="card-search-body"
           style={{ width: "25rem" }}
-          onClick={(event) => playSong(event)}
+          onClick={(event) => handleClick(event)}
         >
           <Card.Img
-            key={song.id}
+            id={song.id}
             className="card-search-img"
             src={song.pathToAlbum !== undefined ? song.pathToAlbum : NOIMG}
-            onError={(event) => replaceImage(event)}
+            onError={(event) => replaceImage(event) }
           />
-          <Card.Body key={index}>
-            <Card.Title className="card-search-title">{song.title}</Card.Title>
-            <Card.Text className="card-search-text">{song.artist}</Card.Text>
+          <Card.Body id={song.id} >
+            <Card.Title id={song.id} className="card-search-title">{song.title}</Card.Title>
+            <Card.Text id={song.id} className="card-search-text">{song.artist}</Card.Text>
           </Card.Body>
         </Card>
       ))}

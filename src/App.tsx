@@ -10,14 +10,6 @@ import { useEffect, useState } from "react";
 
 function App() {
 
-  // Selected Song
-  const [selectedSong, setSelectedSong] = useState<string>("");
-
-/*  useEffect(() => {
-    //Trigger Footer
-    alert("selectedSong"+selectedSong)
-   } , [selectedSong])
-*/
   return (
     <>
       <Router>

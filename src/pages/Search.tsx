@@ -10,7 +10,7 @@ import { Footer } from "../components/Footer";
 
 export const Search = () => {
   const [selectedSong, setSelectedSong] = useState<string>();
-  
+
   const appService = new AppService();
 
   const [songs, setSongs] = useState([]);
@@ -28,6 +28,10 @@ export const Search = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleClick = (event: any) => {
+    setSelectedSong(event.target.id);
+    console.log(selectedSong)
+  };
   useEffect(() => {
     const pagination = async () => {
       setLoading(true);
@@ -54,16 +58,16 @@ export const Search = () => {
 
   return (
     <>
-    <main className="container-fluid body-content">
-      <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
-      <SongsList songs={songs} loading={loading} onSelection={(selectedSong:any) => setSelectedSong(selectedSong)}/>
-      <Pagination
-        songsPerPage={songsPerPage}
-        totalSongs={totalSongs.length}
-        paginate={paginate}
-      />
-    </main>
-     <Footer selectedSong={selectedSong} />
-     </>
+      <main className="container-fluid body-content">
+        <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
+        <SongsList songs={songs} loading={loading} handleClick={handleClick} />
+        <Pagination
+          songsPerPage={songsPerPage}
+          totalSongs={totalSongs.length}
+          paginate={paginate}
+        />
+      </main>
+      <Footer selectedSong={selectedSong} />
+    </>
   );
 };
