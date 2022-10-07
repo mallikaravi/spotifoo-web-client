@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import NOIMG from "../assets/picture-no-album.png";
 import "../styles/Search.css";
 
-export const Songs = ({ songs, loading }: any) => {
+export const CardLayout = ({ songs, loading }: any) => {
   //console.log('Songs length =>', songs.length)
   if (loading) {
     return <h2> Loading...</h2>;

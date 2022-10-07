@@ -1,5 +1,5 @@
 import { AppService } from "../services/app.service";
-import { Songs } from "../components/Songs";
+import { CardLayout as SongsList } from "../components/SearchResults";
 import { Pagination } from "../components/Pagination";
 import SearchInput from "../components/SearchInput";
 
@@ -50,7 +50,7 @@ export const Search = () => {
   return (
     <main className="container-fluid body-content">
       <SearchInput onChangeSearchQuery={(query) => setQuery(query)} />
-      <Songs songs={songs} loading={loading} />
+      <SongsList songs={songs} loading={loading} />
       <Pagination
         songsPerPage={songsPerPage}
         totalSongs={totalSongs.length}

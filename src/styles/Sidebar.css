@@ -89,19 +89,19 @@
     border-radius: 4px;
 }
 
-/*.nav-text a:hover {
-    background-color: #1a83ff;
-}*/
-
 .nav-menu-items {
     width: 100%;
     padding: 0;
 }
 
+.nav-text a:hover {
+    color: var(--light-gray);
+}
+
 .navbar-toggle {
-    background-color: var(--navBg);
+    background-color: var(--gray-darkest);
     width: 100%;
-    height: 80px;
+    height: 50px;
     display: flex;
     justify-content: start;
     align-items: center;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/Sidebar.css";
 import Logo from "../assets/logo.png";
 
-import { Sidemenubar } from "./Sidemenubar";
+import { Sidemenubar } from "../data/Sidemenubar";
 
 export const Sidebar: React.FunctionComponent = () => {
   return (
