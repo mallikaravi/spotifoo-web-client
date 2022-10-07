@@ -14,11 +14,11 @@ function App() {
   // Selected Song
   const [selectedSong, setSelectedSong] = useState<string>("");
 
-  useEffect(() => {
+/*  useEffect(() => {
     //Trigger Footer
     alert("selectedSong"+selectedSong)
    } , [selectedSong])
-
+*/
   return (
     <>
       <Router>

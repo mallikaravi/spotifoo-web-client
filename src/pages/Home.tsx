@@ -80,7 +80,7 @@ export const Home = (selection: ISongSelection) => {
   return (
     <main className="container-fluid body-content">
       <br />
-      <h1 style={{ textAlign: "left" }}> Artist</h1>
+      <h1 style={{ textAlign: "left" , color:"white"}}> Artist</h1>
       <Row xs={1} md={4} className="g-4">
         {artistSorting.map((song: any, index: number) => (
           <Col id={song.id} property="homecard">
@@ -98,7 +98,7 @@ export const Home = (selection: ISongSelection) => {
         ))}
       </Row>
       <br />
-      <h1 style={{ textAlign: "left" }}> Albums</h1>
+      <h1 style={{ textAlign: "left" , color:"white"}}> Albums</h1>
       <Row xs={1} md={4} className="g-4">
         {albumSorting.map((song: any, index: number) => (
           <Col id={song.id} property="homecard">
@@ -116,7 +116,7 @@ export const Home = (selection: ISongSelection) => {
         ))}
       </Row>
       <br />
-      <h1 style={{ textAlign: "left" }}> Genres</h1>
+      <h1 style={{ textAlign: "left", color:"white" }}> Genres</h1>
       <Row xs={1} md={4} className="g-4">
         {genreSorting.map((genre: any, index: number) => (
           <Col id={genre}>
