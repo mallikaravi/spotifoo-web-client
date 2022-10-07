@@ -64,3 +64,4 @@ https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/spotifoo-jir
 
  ## Future Enhancement
  * Introducing play and pause actions so that a song can be played and paused.
+ 
