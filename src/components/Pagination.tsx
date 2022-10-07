@@ -11,13 +11,9 @@ export const Pagination = ({ songsPerPage, totalSongs, paginate }: any) => {
       <ul className="pagination">
         {pageNumers.map((number) => (
           <li key={number} className="page-item" style={{ padding: "2px" }}>
-            <a
-              onClick={() => paginate(number)}
-              href="search"
-              className="page-link"
-            >
+            <button onClick={() => paginate(number)} className="page-link">
               {number}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
