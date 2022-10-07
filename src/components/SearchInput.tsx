@@ -1,8 +1,6 @@
-import * as React from "react";
 import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
-import { FaUserAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/react-fontawesome";
 

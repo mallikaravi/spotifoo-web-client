@@ -13,41 +13,12 @@ export const Container = styled.div`
     
     .musicDiv {
         width: 400px;
-        margin-top: -10px;
+        margin-top: -2px;
         cursor: pointer;
     }
 
-    .test {
-        width: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: end;
-
-        input {
-            appearance: none;
-            border-radius: 10px;
-            width: 120px;
-            background-color: #494A4D;
-            height: 5px;
-            outline: none;
-            margin-right: 15px;
-        }
-        input::-webkit-slider-thumb {
-            appearance: none;
-            height: 14px;
-            width: 14px;
-            background-color: #fff;
-            border-radius: 50%;
-        }
-        .volumeButton {
-            background-color: transparent;
-            border: none;
-            outline: none;
-            cursor: pointer;
-        }
-    }
     .playPause{
-        margin: 0 5px;
+        margin-top: 3px;
     }
     .music {
         display: flex;
@@ -191,4 +162,4 @@ export const Container = styled.div`
         }
     }
     
-    `; 
+    `;

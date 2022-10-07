@@ -1,5 +1,3 @@
-import React from "react";
-import styled from "styled-components";
 import { AppService } from "../services/app.service";
 import { Songs } from "../components/Songs";
 import { Pagination } from "../components/Pagination";
@@ -35,8 +33,8 @@ export const Search = () => {
       setSongs(songs);
       setLoading(false);
     };
-    if (query.length === 0) pagination();
-  }, [currentPage]);
+    if (query.length < 1) pagination();
+  }, [query, currentPage]);
 
   useEffect(() => {
     const search = async () => {

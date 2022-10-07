@@ -4,6 +4,7 @@
     margin: 10px 0 0 0;
     padding: 1px 1px 1px 10px;
     --bs-card-border-color: none;
+    height: 150px;
 }
 
 .card-search-title {

@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Pagination = ({ songsPerPage, totalSongs, paginate }: any) => {
   const pageNumers = [];
   if (totalSongs < songsPerPage) {
@@ -9,11 +7,15 @@ export const Pagination = ({ songsPerPage, totalSongs, paginate }: any) => {
     pageNumers.push(index);
   }
   return (
-    <nav>
+    <nav className="nav justify-content-center">
       <ul className="pagination">
         {pageNumers.map((number) => (
-          <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="!#" className="page-link">
+          <li key={number} className="page-item" style={{ padding: "2px" }}>
+            <a
+              onClick={() => paginate(number)}
+              href="search"
+              className="page-link"
+            >
               {number}
             </a>
           </li>

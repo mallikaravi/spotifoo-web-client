@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import "../styles/Sidebar.css";
 import Logo from "../assets/logo.png";
 
