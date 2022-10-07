@@ -42,7 +42,7 @@ $ npm start
 
 ## Implementation and Design
 
-https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/spotifoo-jira-dashboard.pdf
+https://github.com/mallikaravi/spotifoo-web-client/blob/main/design/Spotifoo-Web-Client-Documentation.pdf
 
 ## Component Tree
 It visualizes the overall hierarchy of the project
